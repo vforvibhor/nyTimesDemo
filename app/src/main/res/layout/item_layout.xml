@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="news" type="com.example.myapplication.data.model.Result"/>
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/ivImageNews"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="16dp"
+        android:layout_centerVertical="true"
+        app:image="@{news.media.size>0? news.media.get(0).media_metadata.get(0).url   : null}"
+         />
+
+    <TextView
+        android:id="@+id/tvNewsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        android:layout_toRightOf="@+id/ivImageNews"
+        android:layout_toLeftOf="@+id/ivRightArrow"
+        android:text="@{news.title}"
+         />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNewsTitle"
+        android:layout_toRightOf="@+id/ivImageNews"
+        android:layout_toLeftOf="@+id/ivRightArrow">
+    <TextView
+        android:id="@+id/tvCreatedBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:layout_toLeftOf="@+id/tvNewsPublishedDate"
+        android:textColor="@android:color/darker_gray"
+        android:layout_alignParentLeft="true"
+        android:textSize="12sp"
+        android:text="@{news.byline}"
+         />
+
+    <TextView
+        android:id="@+id/tvNewsPublishedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="8dp"
+        android:drawableLeft="@drawable/ic_calendar_small"
+        android:text="@{news.published_date}"
+        android:layout_marginRight="8dp"
+
+       />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ivRightArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_right_arrow"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>
+</layout>
